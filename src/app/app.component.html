@@ -1,0 +1,12 @@
+<h1 *ngIf="title">welcome to {{title.caption}}</h1>
+
+<p [id]="10" [style.background]="color" [innerHTML]="duTexte">
+</p>
+
+<input (change)="color = input1.value" type="color" #input1>
+
+<button>its useless</button>
+
+<!-- 
+<button (click)="handleClickEvent($event)">click me</button>
+<button (click)="handleShowValue(input1)">show value</button> -->
