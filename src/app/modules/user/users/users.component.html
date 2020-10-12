@@ -1,1 +1,14 @@
-<p>users works!</p>
+<div>
+    <div [ngSwitch]="users.length">
+        <div *ngSwitchCase="0">no user yet, sorry</div>
+        <div *ngSwitchCase="1">only one user</div>
+        <div *ngSwitchDefault>you got lot of users !</div>
+    </div>
+
+    <ul>
+        <li *ngFor="let user of users" class="user" [ngClass]="{'user-admin': user.isAdmin}">
+            {{user.id}} : {{user.email}} : {{user.isAdmin}}
+            <button (click)="user.toggleAdmin()">toggle admin</button>
+        </li>
+    </ul>
+</div>

@@ -12,7 +12,7 @@ import { UsersComponent } from './users/users.component';
     CommonModule
   ],
   exports: [
-    UserComponent
+    UsersComponent
   ]
 })
 export class UserModule { }
