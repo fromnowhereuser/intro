@@ -1,6 +1,9 @@
 repertoire du git
 https://github.com/fromnowhereuser/intro
 
+drive slide:
+https://drive.google.com/drive/folders/1nT_gsTuYZ1OJl_Uc2ot1Z5lJpODXhC-x
+
 COMMANDES:
 -----------------
 #cloner:
