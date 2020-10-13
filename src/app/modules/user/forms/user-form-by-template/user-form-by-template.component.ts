@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-user-form-by-template',
@@ -7,9 +8,17 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./user-form-by-template.component.scss']
 })
 export class UserFormByTemplateComponent implements OnInit {
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
+
+  user = new User(0, '');
+
+  constructor() {
+
   }
 
+  ngOnInit(): void {
+  }
 
+  public submit(values: any) {
+    console.log(values);
+  }
 }
