@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppConfig } from './app.config';
 
 @Component({
   selector: 'app-root',
@@ -6,15 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  public title;
+  public title = {
+    caption: 'intro'
+  };
 
-  public duTexte = 'qsfnqsdkmjfqsdfjklsqdfbkjbl';
-  public color = 'orange';
+  constructor(
+    public appConfig: AppConfig
+  ) {
 
-  constructor() {
-    setTimeout(() => this.title = {
-      caption: 'intro'
-    }, 1000)
   }
 
   ngOnInit(): void {

@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './common/landing/landing.component';
 import { UserModule } from './modules/user/user.module';
+import { AppConfig, CONFIG1 } from './app.config';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,12 @@ import { UserModule } from './modules/user/user.module';
     BrowserModule,
     UserModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: AppConfig,
+      useValue: CONFIG1
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
