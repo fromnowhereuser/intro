@@ -1,0 +1,15 @@
+<form (ngSubmit)="submit()" [formGroup]="userForm">
+
+    <div>
+        <label>email</label>
+        <input name="email" formControlName="email">
+
+    </div>
+
+    <div>
+        <label>isAdmin</label>
+        <input type="checkbox" name="isAdmin" formControlName="isAdmin">
+    </div>
+
+
+</form>

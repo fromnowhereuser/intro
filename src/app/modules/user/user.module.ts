@@ -5,20 +5,42 @@ import { UsersComponent } from './users/users.component';
 import { DoNothingDirective } from './do-nothing.directive';
 import { UsersService } from './services/users.service';
 import { AbstractUserService } from './services/abstract-users.service';
+import { AppConfig } from 'src/app/app.config';
+import { Users2Service } from './services/users2.service';
+import { UserPipe } from './pipes/user.pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserFormByCodeComponent } from './forms/user-form-by-code/user-form-by-code.component';
+import { UserFormByTemplateComponent } from './forms/user-form-by-template/user-form-by-template.component';
 
 @NgModule({
   declarations: [
     UserComponent,
     UsersComponent,
-    DoNothingDirective
+    DoNothingDirective,
+    UserPipe,
+    UserFormByCodeComponent,
+    UserFormByTemplateComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     {
       provide: AbstractUserService,
-      useClass: UsersService
+      deps: [
+        AppConfig
+      ],
+      useFactory: (
+        appConfig: AppConfig
+      ) => {
+        if (appConfig.mode === 1) {
+          return new UsersService();
+        } else {
+          return new Users2Service();
+        }
+      }
     }
   ],
   exports: [

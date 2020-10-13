@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { User } from 'src/app/models/user.model';
+import { AbstractUserService } from './abstract-users.service';
 import { ApiService } from './api.service';
 
 @Injectable()
-export class UsersService {
+export class UsersService extends AbstractUserService {
   private users = new Array<User>();
 
   constructor(
-    private api: ApiService
   ) {
+    super();
     this.addUser(new User(0, 'john@lol.com'));
     this.addUser(new User(1, 'kayzer@lol.com'));
     this.addUser(new User(2, 'wallace@lol.com'));

@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './common/landing/landing.component';
 import { UserModule } from './modules/user/user.module';
-import { AppConfig, CONFIG1 } from './app.config';
+import { AppConfig, CONFIG1, CONFIG2 } from './app.config';
 
 @NgModule({
   declarations: [

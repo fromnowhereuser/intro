@@ -11,6 +11,9 @@ export class AppComponent implements OnInit {
     caption: 'intro'
   };
 
+  money = 19237;
+  date = new Date();
+
   constructor(
     public appConfig: AppConfig
   ) {
@@ -26,7 +29,6 @@ export class AppComponent implements OnInit {
 
   public handleShowValue(elem: HTMLInputElement) {
     console.log('handleShowValue');
-    this.color = elem.value;
   }
 
   /*
