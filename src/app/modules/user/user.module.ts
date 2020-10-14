@@ -11,6 +11,7 @@ import { UserPipe } from './pipes/user.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserFormByCodeComponent } from './forms/user-form-by-code/user-form-by-code.component';
 import { UserFormByTemplateComponent } from './forms/user-form-by-template/user-form-by-template.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { UserFormByTemplateComponent } from './forms/user-form-by-template/user-
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule
   ],
@@ -30,15 +32,17 @@ import { UserFormByTemplateComponent } from './forms/user-form-by-template/user-
     {
       provide: AbstractUserService,
       deps: [
-        AppConfig
+        AppConfig,
+        HttpClient
       ],
       useFactory: (
-        appConfig: AppConfig
+        appConfig: AppConfig,
+        httpClient: HttpClient
       ) => {
         if (appConfig.mode === 1) {
           return new UsersService();
         } else {
-          return new Users2Service();
+          return new Users2Service(httpClient);
         }
       }
     }

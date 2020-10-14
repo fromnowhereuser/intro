@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators'
 
 @Component({
@@ -9,19 +9,29 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators'
 })
 export class UserFormByCodeComponent implements OnInit {
   userForm: FormGroup;
+  emailCtrl: AbstractControl;
+
 
   constructor(private fb: FormBuilder) {
     this.userForm = fb.group({
-      id: fb.control(0, [
-        Validators.required,
-        Validators.min(0)
-      ], []),
+      id: fb.control(0, {
+        validators: [
+          Validators.required,
+          Validators.min(0)
+        ],
+        asyncValidators: [],
+        updateOn: "change"
+      }),
       email: fb.control('', [
         Validators.required,
         Validators.email
       ], []),
       isAdmin: fb.control(false),
     });
+
+
+
+    this.emailCtrl = this.userForm.get('email');
 
     this
       .userForm

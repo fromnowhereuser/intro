@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from 'src/app/models/user.model';
 import { AbstractUserService } from './abstract-users.service';
@@ -8,7 +9,9 @@ import { AbstractUserService } from './abstract-users.service';
 export class Users2Service extends AbstractUserService {
 
 
-  constructor() {
+  constructor(
+    private http: HttpClient
+  ) {
     super();
   }
 
