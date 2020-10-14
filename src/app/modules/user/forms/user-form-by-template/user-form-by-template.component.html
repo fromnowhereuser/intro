@@ -1,12 +1,16 @@
 <form (ngSubmit)="submit(userForm.value)" #userForm="ngForm">
     <div>
         <label>id</label>
-        <input type="text" name="id" readonly [(ngModel)]="user.id">
+        <input type="text" name="id" readonly min=0 [(ngModel)]="user.id">
     </div>
 
     <div>
         <label>email</label>
-        <input type="text" name="email" [(ngModel)]="user.email">
+        <input type="text" name="email" [(ngModel)]="user.email" email required #userNameCtrl="ngModel">
+        <div *ngIf="userNameCtrl.dirty && userNameCtrl.hasError('required')">email is required</div>
+        <div *ngIf="userNameCtrl.dirty && userNameCtrl.hasError('email')">email must be be an email</div>
+        <div *ngIf="userNameCtrl.dirty && userForm.controls.email.errors?.email">email must be be an email
+        </div>
     </div>
 
     <div>
@@ -16,7 +20,7 @@
 
     <div>
         <button type="reset">reset</button>
-        <button type="submit">submit</button>
+        <button [disabled]="userForm.invalid" type="submit">submit</button>
     </div>
 
     {{user | user}}

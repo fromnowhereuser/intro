@@ -6,8 +6,7 @@
     </div>
 
     <ul>
-        <li *ngFor="let user of usersService.getUsers() | slice:0:5" class="user"
-            [ngClass]="{'user-admin': user.isAdmin}">
+        <li *ngFor="let user of usersService.getUsers()" class="user" [ngClass]="{'user-admin': user.isAdmin}">
             <!-- {{user.id}} : {{user.email}} : {{user.isAdmin}} -->
             {{user | user}}
             <button (click)="user.toggleAdmin()">toggle admin</button>
@@ -18,7 +17,7 @@
     <hr>
     <app-user-form-by-code></app-user-form-by-code>
     <hr>
-    <app-user-form-by-template></app-user-form-by-template>
+    <app-user-form-by-template (userInput)="handleUserInput($event)"></app-user-form-by-template>
 
     <hr>
 

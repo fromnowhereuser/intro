@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { User } from 'src/app/models/user.model';
+import { AbstractUserService } from '../../services/abstract-users.service';
 
 @Component({
   selector: 'app-user-form-by-template',
@@ -9,9 +9,14 @@ import { User } from 'src/app/models/user.model';
 })
 export class UserFormByTemplateComponent implements OnInit {
 
+  @Output('userInput')
+  userInput = new EventEmitter<User>();
+
   user = new User(0, '');
 
-  constructor() {
+  constructor(
+    private userService: AbstractUserService
+  ) {
 
   }
 
@@ -19,6 +24,8 @@ export class UserFormByTemplateComponent implements OnInit {
   }
 
   public submit(values: any) {
-    console.log(values);
+    const nu = new User(0, '');
+    Object.assign(nu, this.user);
+    this.userInput.emit(nu);
   }
 }

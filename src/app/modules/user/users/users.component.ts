@@ -23,4 +23,11 @@ export class UsersComponent implements OnInit {
     console.log(color);
   }
 
+  handleUserInput(user: User) {
+    this.usersService.addUser(user);
+  }
+
+
+
+
 }

@@ -18,3 +18,8 @@ npm i
 npm start
 #pour update
 git pull
+
+
+
+
+// resync
