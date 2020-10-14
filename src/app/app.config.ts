@@ -5,13 +5,13 @@ export class AppConfig {
 }
 
 export const CONFIG1: AppConfig = {
-    apiendpoint: 'url1',
+    apiendpoint: '',
     title: 'main',
     mode: 1
 }
 
 export const CONFIG2: AppConfig = {
-    apiendpoint: 'https://jsonplaceholder.typicode.com/users',
+    apiendpoint: 'http://91.121.148.187:8080/users/',
     title: 'secondary',
     mode: 2
 }

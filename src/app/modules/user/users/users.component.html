@@ -5,6 +5,8 @@
         <div *ngSwitchDefault>you got lot of users !</div>
     </div>
 
+
+
     <ul>
         <li *ngFor="let user of users | async" class="user" [ngClass]="{'user-admin': user.isAdmin}">
             <!-- {{user.id}} : {{user.email}} : {{user.isAdmin}} -->
@@ -14,8 +16,9 @@
     </ul>
 
 
-    <hr>
-    <app-user-form-by-code></app-user-form-by-code>
+    <!-- 
+        <hr>
+    <app-user-form-by-code></app-user-form-by-code> -->
     <hr>
     <app-user-form-by-template (userInput)="handleUserInput($event)"></app-user-form-by-template>
 

@@ -23,11 +23,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
 
-    const values = [1, 2, 3, 4, 5];
+    // const values = [1, 2, 3, 4, 5];
 
-    of(values).subscribe(value => console.log(value));
+    // of(values)
 
-    from(values).subscribe(value => console.log(value));
+    // from(values)
 
 
 

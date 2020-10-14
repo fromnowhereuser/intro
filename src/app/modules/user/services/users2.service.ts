@@ -21,11 +21,16 @@ export class Users2Service extends AbstractUserService {
   }
 
   addUser(user: User) {
-
+    this
+      .http
+      .post(this.appConfig.apiendpoint, user)
+      .subscribe();
   }
+
   deleteUser(todel: User) {
     throw new Error('Method not implemented.');
   }
+
   getUsers(): Observable<Array<User>> {
     return this
       .http
