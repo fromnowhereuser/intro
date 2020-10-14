@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { User } from 'src/app/models/user.model';
 import { AbstractUserService } from '../services/abstract-users.service';
 import { UsersService } from '../services/users.service';
@@ -10,6 +11,7 @@ import { UsersService } from '../services/users.service';
 })
 export class UsersComponent implements OnInit {
 
+  users: Observable<Array<User>>;
 
   constructor(
     public usersService: AbstractUserService
@@ -17,6 +19,7 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.users = this.usersService.getUsers();
   }
 
   handleColorAffect(color: string) {

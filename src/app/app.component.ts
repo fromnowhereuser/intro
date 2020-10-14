@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { from, of } from 'rxjs';
 import { AppConfig } from './app.config';
 
 @Component({
@@ -21,6 +22,15 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    const values = [1, 2, 3, 4, 5];
+
+    of(values).subscribe(value => console.log(value));
+
+    from(values).subscribe(value => console.log(value));
+
+
+
   }
 
   public handleClickEvent(event: MouseEvent) {

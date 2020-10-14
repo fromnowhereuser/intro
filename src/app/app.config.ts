@@ -11,7 +11,7 @@ export const CONFIG1: AppConfig = {
 }
 
 export const CONFIG2: AppConfig = {
-    apiendpoint: 'url2',
+    apiendpoint: 'https://jsonplaceholder.typicode.com/users',
     title: 'secondary',
     mode: 2
 }

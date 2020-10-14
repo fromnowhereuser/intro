@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { of } from 'rxjs';
 import { User } from 'src/app/models/user.model';
 import { AbstractUserService } from './abstract-users.service';
 import { ApiService } from './api.service';
@@ -29,7 +30,7 @@ export class UsersService extends AbstractUserService {
   }
 
   getUsers() {
-    return this.users;
+    return of(this.users);
   }
 
 }

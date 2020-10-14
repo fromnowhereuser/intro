@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { User } from 'src/app/models/user.model';
 import { UsersService } from './users.service';
 
@@ -9,5 +10,5 @@ import { UsersService } from './users.service';
 export abstract class AbstractUserService {
     abstract addUser(user: User);
     abstract deleteUser(todel: User);
-    abstract getUsers();
+    abstract getUsers(): Observable<Array<User>>;
 }

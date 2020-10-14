@@ -42,7 +42,10 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
         if (appConfig.mode === 1) {
           return new UsersService();
         } else {
-          return new Users2Service(httpClient);
+          return new Users2Service(
+            appConfig,
+            httpClient
+          );
         }
       }
     }

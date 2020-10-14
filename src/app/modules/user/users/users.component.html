@@ -1,12 +1,12 @@
 <div>
-    <div [ngSwitch]=" usersService.getUsers().length">
+    <div [ngSwitch]="(users | async).length">
         <div *ngSwitchCase="0">no user yet, sorry</div>
         <div *ngSwitchCase="1">only one user</div>
         <div *ngSwitchDefault>you got lot of users !</div>
     </div>
 
     <ul>
-        <li *ngFor="let user of usersService.getUsers()" class="user" [ngClass]="{'user-admin': user.isAdmin}">
+        <li *ngFor="let user of users | async" class="user" [ngClass]="{'user-admin': user.isAdmin}">
             <!-- {{user.id}} : {{user.email}} : {{user.isAdmin}} -->
             {{user | user}}
             <button (click)="user.toggleAdmin()">toggle admin</button>

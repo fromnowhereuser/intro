@@ -19,7 +19,7 @@ import { AppConfig, CONFIG1, CONFIG2 } from './app.config';
   providers: [
     {
       provide: AppConfig,
-      useValue: CONFIG1
+      useValue: CONFIG2
     }
   ],
   bootstrap: [AppComponent]
