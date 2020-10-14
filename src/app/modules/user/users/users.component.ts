@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { User } from 'src/app/models/user.model';
 import { AbstractUserService } from '../services/abstract-users.service';
 import { UsersService } from '../services/users.service';
@@ -27,7 +27,10 @@ export class UsersComponent implements OnInit {
   }
 
   handleUserInput(user: User) {
-    this.usersService.addUser(user);
+    this.usersService.addUser(user).subscribe(
+      users =>
+        this.users = of(users)
+    );
   }
 
 

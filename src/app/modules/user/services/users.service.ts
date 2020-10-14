@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { User } from 'src/app/models/user.model';
 import { AbstractUserService } from './abstract-users.service';
 import { ApiService } from './api.service';
 
 @Injectable()
 export class UsersService extends AbstractUserService {
+  isEmailTaken(email: string): Observable<Boolean> {
+    throw new Error('Method not implemented.');
+  }
   private users = new Array<User>();
 
   constructor(
@@ -18,6 +21,7 @@ export class UsersService extends AbstractUserService {
 
   addUser(user: User) {
     this.users.push(user);
+    return of(this.users);
   }
 
 

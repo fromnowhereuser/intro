@@ -24,7 +24,8 @@ export class UserFormByCodeComponent implements OnInit {
       }),
       email: fb.control('', [
         Validators.required,
-        Validators.email
+        Validators.email,
+        UserFormByCodeComponent.isNotToto
       ], []),
       isAdmin: fb.control(false),
     });
@@ -46,6 +47,11 @@ export class UserFormByCodeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  static isNotToto(control: AbstractControl) {
+    const email = control.value;
+    return email === 'toto@toto.com' ? { isToto: true } : null;
   }
 
   public submit() {

@@ -1,7 +1,8 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { isDefined } from '@angular/compiler/src/util';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map, switchMap, tap, toArray } from 'rxjs/operators';
+import { find, map, switchMap, tap, toArray } from 'rxjs/operators';
 import { AppConfig } from 'src/app/app.config';
 import { User } from 'src/app/models/user.model';
 import { AbstractUserService } from './abstract-users.service';
@@ -12,7 +13,6 @@ import { AbstractUserService } from './abstract-users.service';
 export class Users2Service extends AbstractUserService {
 
 
-
   constructor(
     private appConfig: AppConfig,
     private http: HttpClient
@@ -20,11 +20,12 @@ export class Users2Service extends AbstractUserService {
     super();
   }
 
-  addUser(user: User) {
-    this
+  addUser(user: User): Observable<Array<User>> {
+    console.log('add');
+
+    return this
       .http
-      .post(this.appConfig.apiendpoint, user)
-      .subscribe();
+      .post<Array<User>>(this.appConfig.apiendpoint, user)
   }
 
   deleteUser(todel: User) {
@@ -45,4 +46,15 @@ export class Users2Service extends AbstractUserService {
         tap(val => console.log(val)),
       )
   }
+
+  isEmailTaken(tofind: string): Observable<Boolean> {
+    return this.getUsers()
+      .pipe(
+        switchMap(users => users),
+        map(user => user.email),
+        find(email => email === tofind),
+        map(email => email ? true : false)
+      );
+  }
+
 }

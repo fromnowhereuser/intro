@@ -1,11 +1,11 @@
 <div>
-    <div [ngSwitch]="(users | async).length">
+    <!-- <div [ngSwitch]="(users | async).length">
         <div *ngSwitchCase="0">no user yet, sorry</div>
         <div *ngSwitchCase="1">only one user</div>
         <div *ngSwitchDefault>you got lot of users !</div>
     </div>
 
-
+ -->
 
     <ul>
         <li *ngFor="let user of users | async" class="user" [ngClass]="{'user-admin': user.isAdmin}">
@@ -16,11 +16,12 @@
     </ul>
 
 
-    <!-- 
-        <hr>
-    <app-user-form-by-code></app-user-form-by-code> -->
+
     <hr>
-    <app-user-form-by-template (userInput)="handleUserInput($event)"></app-user-form-by-template>
+    <app-user-form-by-code></app-user-form-by-code>
+
+    <hr>
+    <!-- <app-user-form-by-template (userInput)="handleUserInput($event)"></app-user-form-by-template> -->
 
     <hr>
 

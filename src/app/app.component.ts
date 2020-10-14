@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { from, of } from 'rxjs';
+import { from, Observable, of } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 import { AppConfig } from './app.config';
 
 @Component({
@@ -22,6 +23,27 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    // let i = 0;
+
+    // const o = new Observable((sub) => {
+    //   setInterval(() => {
+    //     sub.next(i++);
+    //   }, 1000);
+    // });
+
+    // o
+    //   .pipe(
+    //     filter(i => i > 5)
+    //   )
+    //   .subscribe(val => console.log(val));
+
+    // o
+    //   .pipe(
+    //     map((i: number) => 100 * i)
+    //   )
+    //   .subscribe(val => console.log(val));
+
 
     // const values = [1, 2, 3, 4, 5];
 
