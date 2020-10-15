@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { from, Observable, of } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { AppConfig } from './app.config';
@@ -17,12 +18,15 @@ export class AppComponent implements OnInit {
   date = new Date();
 
   constructor(
-    public appConfig: AppConfig
+    public appConfig: AppConfig,
+    public router: Router
   ) {
 
   }
 
   ngOnInit(): void {
+
+    // this.router.navigate(['users', 10]) // #/users/1
 
     // let i = 0;
 

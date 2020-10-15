@@ -1,1 +1,15 @@
-<p>menu works!</p>
+<nav>
+    <ul>
+        <li>
+            <a routerLink="/landing" routerLinkActive="link-active">landing</a>
+        </li>
+
+        <li *ngIf="auth.isLogged">
+            <a routerLink="/users" routerLinkActive="link-active">users</a>
+        </li>
+
+        <li>
+            <a routerLink="/auth" routerLinkActive="link-active">auth</a>
+        </li>
+    </ul>
+</nav>

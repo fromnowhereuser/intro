@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LandingComponent } from '../common/landing/landing.component';
 import { ErrorComponent } from '../common/error/error.component';
 import { UsersComponent } from '../modules/user/users/users.component';
+import { AuthComponent } from '../modules/auth/auth/auth.component';
 
 const routes: Routes = [
   {
@@ -17,7 +18,11 @@ const routes: Routes = [
   },
   {
     path: 'users',
-    component: UsersComponent
+    component: UsersComponent,
+  },
+  {
+    path: 'auth',
+    component: AuthComponent,
   },
   {
     path: '**',
@@ -29,7 +34,12 @@ const routes: Routes = [
   declarations: [],
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(
+      routes,
+      {
+        useHash: true
+      }
+    )
   ],
   exports: [
     RouterModule

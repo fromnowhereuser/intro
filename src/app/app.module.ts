@@ -9,6 +9,8 @@ import { AppConfig, CONFIG1, CONFIG2 } from './app.config';
 import { ErrorComponent } from './common/error/error.component';
 import { MenuComponent } from './common/menu/menu.component';
 import { RoutingModule } from './routing/routing.module';
+import { AuthModule } from './modules/auth/auth.module';
+import { AuthService } from './modules/auth/services/auth.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { RoutingModule } from './routing/routing.module';
   imports: [
     BrowserModule,
     RoutingModule,
-    UserModule
+    UserModule,
+    AuthModule
   ],
   providers: [
     {
