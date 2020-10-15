@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { User } from 'src/app/models/user.model';
 import { AbstractUserService } from '../services/abstract-users.service';
-import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-users',
@@ -26,7 +25,6 @@ export class UsersComponent implements OnInit {
     this.users = this.usersService.getUsers();
     this.usersByResolver = this.activatedRoute.snapshot.data['users']
 
-
   }
 
   handleColorAffect(color: string) {
@@ -38,6 +36,10 @@ export class UsersComponent implements OnInit {
       users =>
         this.users = of(users)
     );
+  }
+
+  handleDetails() {
+    this.router.navigate([]);
   }
 
 

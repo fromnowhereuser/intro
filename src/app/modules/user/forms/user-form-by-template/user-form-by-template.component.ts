@@ -26,6 +26,7 @@ export class UserFormByTemplateComponent implements OnInit {
   public submit(values: any) {
     const nu = new User(0, '');
     Object.assign(nu, this.user);
-    this.userInput.emit(nu);
+    this.userService.addUser(nu).subscribe();
+    // this.userInput.emit(nu);
   }
 }

@@ -13,4 +13,6 @@ export class User {
     toggleAdmin() {
         this.isAdmin = !this.isAdmin;
     }
+
+
 }
