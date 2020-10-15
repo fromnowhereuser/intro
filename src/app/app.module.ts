@@ -11,6 +11,7 @@ import { MenuComponent } from './common/menu/menu.component';
 import { RoutingModule } from './routing/routing.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { AuthService } from './modules/auth/services/auth.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AuthService } from './modules/auth/services/auth.service';
     BrowserModule,
     RoutingModule,
     UserModule,
-    AuthModule
+    AuthModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {

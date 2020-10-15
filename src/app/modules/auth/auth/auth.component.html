@@ -1,7 +1,27 @@
-<div>
-    log state: {{auth.isLogged}}
-</div>
-<div>
-    <button (click)="auth.login()">log in</button>
-    <button (click)="auth.logout()">log out</button>
+<div fxFlex fxLayout="column" fxLayoutAlign="center center">
+
+    <div fxFlex>
+        log state: {{auth.isLogged}}
+    </div>
+    <div fxFlex fxLayout="column">
+
+
+        <form fxFlex fxLayout="column">
+            <mat-form-field>
+                <input type="email" placeholder="email" matInput>
+
+            </mat-form-field>
+
+            <mat-form-field>
+                <input type="password" placeholder="password" matInput>
+
+            </mat-form-field>
+
+            <button mat-button color="primary" (click)="auth.login()">log in</button>
+            <button mat-button color="secondary" (click)="auth.logout()">log out</button>
+        </form>
+
+
+
+    </div>
 </div>

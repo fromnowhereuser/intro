@@ -29,22 +29,18 @@ export class AppComponent implements OnInit {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
         console.log('NavigationStart');
-
       }
 
       if (event instanceof NavigationEnd) {
         console.log('NavigationEnd');
-
       }
 
       if (event instanceof NavigationCancel) {
         console.log('NavigationCancel');
-
       }
 
       if (event instanceof NavigationError) {
         console.log('NavigationError');
-
       }
     });
 
