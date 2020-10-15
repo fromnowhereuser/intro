@@ -5,6 +5,7 @@ import { LandingComponent } from '../common/landing/landing.component';
 import { ErrorComponent } from '../common/error/error.component';
 import { UsersComponent } from '../modules/user/users/users.component';
 import { AuthComponent } from '../modules/auth/auth/auth.component';
+import { AuthGuard } from '../modules/auth/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -19,6 +20,9 @@ const routes: Routes = [
   {
     path: 'users',
     component: UsersComponent,
+    canActivate: [
+      AuthGuard
+    ]
   },
   {
     path: 'auth',
