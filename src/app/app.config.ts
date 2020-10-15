@@ -11,7 +11,7 @@ export const CONFIG1: AppConfig = {
 }
 
 export const CONFIG2: AppConfig = {
-    apiendpoint: 'http://91.121.148.187:8080/users/',
+    apiendpoint: 'http://91.121.148.187:8081/users/',
     title: 'secondary',
     mode: 2
 }

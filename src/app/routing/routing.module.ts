@@ -9,6 +9,7 @@ import { AuthGuard } from '../modules/auth/guards/auth.guard';
 import { UsersResolver } from '../modules/user/resolvers/users.resolver';
 import { UserFormByTemplateComponent } from '../modules/user/forms/user-form-by-template/user-form-by-template.component';
 import { UserDetailsComponent } from '../modules/user/user-details/user-details.component';
+import { UserResolver } from '../modules/user/resolvers/user.resolver';
 
 const routes: Routes = [
   {
@@ -34,7 +35,10 @@ const routes: Routes = [
         component: UserFormByTemplateComponent
       },
       {
-        path: 'details',
+        path: 'details/:id',
+        resolve: {
+          user: UserResolver
+        },
         component: UserDetailsComponent
       },
     ],

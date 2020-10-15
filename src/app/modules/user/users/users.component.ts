@@ -23,7 +23,7 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
     this.users = this.usersService.getUsers();
-    this.usersByResolver = this.activatedRoute.snapshot.data['users']
+    this.usersByResolver = this.activatedRoute.snapshot.data['users'];
 
   }
 
