@@ -1,6 +1,7 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { isDefined } from '@angular/compiler/src/util';
 import { Injectable } from '@angular/core';
+import { plainToClass } from 'class-transformer';
 import { Observable } from 'rxjs';
 import { find, map, switchMap, tap, toArray } from 'rxjs/operators';
 import { AppConfig } from 'src/app/app.config';
@@ -11,7 +12,6 @@ import { AbstractUserService } from './abstract-users.service';
   providedIn: 'root'
 })
 export class Users2Service extends AbstractUserService {
-
 
   constructor(
     private appConfig: AppConfig,
@@ -26,6 +26,10 @@ export class Users2Service extends AbstractUserService {
     return this
       .http
       .post<Array<User>>(this.appConfig.apiendpoint, user)
+      .pipe(
+        map(json => plainToClass(User, json)),
+        tap(users => this.usersSubject.next(users))
+      )
   }
 
   deleteUser(todel: User) {
@@ -37,13 +41,10 @@ export class Users2Service extends AbstractUserService {
       .http
       .get<Array<any>>(this.appConfig.apiendpoint)
       .pipe(
-        // tap(val => console.log(val)),
-        switchMap(values => values),
-        // tap(val => console.log(val)),
-        map(obj => new User(obj.id, obj.email)),
-        // tap(val => console.log(val)),
-        toArray(),
-        // tap(val => console.log(val)),
+        map(json => plainToClass(User, json)),
+        tap(val => {
+          this.usersSubject.next(val);
+        }),
       )
   }
 

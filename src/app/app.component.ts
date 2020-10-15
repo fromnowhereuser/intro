@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 import { from, Observable, of } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { AppConfig } from './app.config';
@@ -25,6 +25,28 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        console.log('NavigationStart');
+
+      }
+
+      if (event instanceof NavigationEnd) {
+        console.log('NavigationEnd');
+
+      }
+
+      if (event instanceof NavigationCancel) {
+        console.log('NavigationCancel');
+
+      }
+
+      if (event instanceof NavigationError) {
+        console.log('NavigationError');
+
+      }
+    });
 
     // this.router.navigate(['users', 10]) // #/users/1
 
