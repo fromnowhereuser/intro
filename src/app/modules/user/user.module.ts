@@ -12,6 +12,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserFormByCodeComponent } from './forms/user-form-by-code/user-form-by-code.component';
 import { UserFormByTemplateComponent } from './forms/user-form-by-template/user-form-by-template.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { UserDetailsComponent } from './user-details/user-details.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -20,13 +22,15 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     DoNothingDirective,
     UserPipe,
     UserFormByCodeComponent,
-    UserFormByTemplateComponent
+    UserFormByTemplateComponent,
+    UserDetailsComponent
   ],
   imports: [
     CommonModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   providers: [
     {
@@ -51,7 +55,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     }
   ],
   exports: [
-    UsersComponent
+    UsersComponent,
+    UserFormByTemplateComponent,
+    UserDetailsComponent
   ]
 })
 export class UserModule { }

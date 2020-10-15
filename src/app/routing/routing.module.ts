@@ -7,6 +7,8 @@ import { UsersComponent } from '../modules/user/users/users.component';
 import { AuthComponent } from '../modules/auth/auth/auth.component';
 import { AuthGuard } from '../modules/auth/guards/auth.guard';
 import { UsersResolver } from '../modules/user/resolvers/users.resolver';
+import { UserFormByTemplateComponent } from '../modules/user/forms/user-form-by-template/user-form-by-template.component';
+import { UserDetailsComponent } from '../modules/user/user-details/user-details.component';
 
 const routes: Routes = [
   {
@@ -21,6 +23,21 @@ const routes: Routes = [
   {
     path: 'users',
     component: UsersComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'form',
+        pathMatch: 'full'
+      },
+      {
+        path: 'form',
+        component: UserFormByTemplateComponent
+      },
+      {
+        path: 'details',
+        component: UserDetailsComponent
+      },
+    ],
     resolve: {
       users: UsersResolver
     },

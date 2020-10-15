@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { User } from 'src/app/models/user.model';
 import { AbstractUserService } from '../services/abstract-users.service';
@@ -17,7 +17,8 @@ export class UsersComponent implements OnInit {
 
   constructor(
     public usersService: AbstractUserService,
-    public activatedRoute: ActivatedRoute
+    public activatedRoute: ActivatedRoute,
+    public router: Router
   ) {
   }
 
