@@ -6,6 +6,7 @@ import { ErrorComponent } from '../common/error/error.component';
 import { UsersComponent } from '../modules/user/users/users.component';
 import { AuthComponent } from '../modules/auth/auth/auth.component';
 import { AuthGuard } from '../modules/auth/guards/auth.guard';
+import { UsersResolver } from '../modules/user/resolvers/users.resolver';
 
 const routes: Routes = [
   {
@@ -20,6 +21,9 @@ const routes: Routes = [
   {
     path: 'users',
     component: UsersComponent,
+    resolve: {
+      users: UsersResolver
+    },
     canActivate: [
       AuthGuard
     ]

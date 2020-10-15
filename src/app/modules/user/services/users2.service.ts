@@ -37,13 +37,13 @@ export class Users2Service extends AbstractUserService {
       .http
       .get<Array<any>>(this.appConfig.apiendpoint)
       .pipe(
-        tap(val => console.log(val)),
+        // tap(val => console.log(val)),
         switchMap(values => values),
-        tap(val => console.log(val)),
+        // tap(val => console.log(val)),
         map(obj => new User(obj.id, obj.email)),
-        tap(val => console.log(val)),
+        // tap(val => console.log(val)),
         toArray(),
-        tap(val => console.log(val)),
+        // tap(val => console.log(val)),
       )
   }
 

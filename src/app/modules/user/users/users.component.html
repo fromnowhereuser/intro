@@ -7,6 +7,7 @@
 
  -->
 
+    by services
     <ul>
         <li *ngFor="let user of users | async" class="user" [ngClass]="{'user-admin': user.isAdmin}">
             <!-- {{user.id}} : {{user.email}} : {{user.isAdmin}} -->
@@ -15,6 +16,14 @@
         </li>
     </ul>
 
+    by resolve
+    <ul>
+        <li *ngFor="let user of usersByResolver" class="user" [ngClass]="{'user-admin': user.isAdmin}">
+            <!-- {{user.id}} : {{user.email}} : {{user.isAdmin}} -->
+            {{user | user}}
+            <button (click)="user.toggleAdmin()">toggle admin</button>
+        </li>
+    </ul>
 
 
     <hr>

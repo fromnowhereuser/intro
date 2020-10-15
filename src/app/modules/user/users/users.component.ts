@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { User } from 'src/app/models/user.model';
 import { AbstractUserService } from '../services/abstract-users.service';
@@ -12,14 +13,19 @@ import { UsersService } from '../services/users.service';
 export class UsersComponent implements OnInit {
 
   users: Observable<Array<User>>;
+  usersByResolver: Array<User>;
 
   constructor(
-    public usersService: AbstractUserService
+    public usersService: AbstractUserService,
+    public activatedRoute: ActivatedRoute
   ) {
   }
 
   ngOnInit(): void {
     this.users = this.usersService.getUsers();
+    this.usersByResolver = this.activatedRoute.snapshot.data['users']
+
+
   }
 
   handleColorAffect(color: string) {
