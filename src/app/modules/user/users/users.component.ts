@@ -2,9 +2,12 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort, MatSortable } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Select, Store } from '@ngxs/store';
 import { Observable, of } from 'rxjs';
 import { User } from 'src/app/models/user.model';
 import { AbstractUserService } from '../services/abstract-users.service';
+import { GetUsers } from '../store/users.action';
+import { UsersState } from '../store/users.state';
 
 @Component({
   selector: 'app-users',
@@ -20,10 +23,15 @@ export class UsersComponent implements OnInit, AfterViewInit {
   usersByResolver: Array<User>;
   displayedColumns: string[] = ['id', 'email', 'isAdmin', 'organisation', 'password'];
 
+  @Select(UsersState.getUsers)
+  users$: Observable<User[]>;
+
+
   constructor(
     public usersService: AbstractUserService,
     public activatedRoute: ActivatedRoute,
-    public router: Router
+    public router: Router,
+    private store: Store
   ) {
   }
   ngAfterViewInit(): void {
@@ -31,6 +39,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    this.store.dispatch(new GetUsers());
     this.users = this.usersService.getUsers();
     this.usersByResolver = this.activatedRoute.snapshot.data['users'];
 

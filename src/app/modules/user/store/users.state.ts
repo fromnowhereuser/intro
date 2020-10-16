@@ -5,7 +5,7 @@ import { tap } from 'rxjs/operators';
 import { User } from 'src/app/models/user.model';
 import { AbstractUserService } from '../services/abstract-users.service';
 import { Users2Service } from '../services/users2.service';
-import { AddUser } from './users.action';
+import { AddUser, GetUsers } from './users.action';
 
 export class UsersStateModel {
     users: Array<User>;
@@ -38,7 +38,7 @@ export class UsersState {
 
     @Action(AddUser)
     addUser(
-        { patchState, getState }: StateContext<UsersStateModel>,
+        { patchState }: StateContext<UsersStateModel>,
         { payload }: AddUser
     ) {
         return this.userService
@@ -53,6 +53,21 @@ export class UsersState {
                 })
             )
 
+    }
+
+    @Action(GetUsers)
+    getAllUsers({ setState }: StateContext<UsersStateModel>) {
+        return this
+            .userService
+            .getUsers()
+            .pipe(
+                tap(users => {
+                    setState({
+                        users: users,
+                        isLoaded: true
+                    })
+                })
+            )
     }
 
 
