@@ -6,7 +6,7 @@
     <div fxFlex fxLayout="column">
 
 
-        <form fxFlex fxLayout="column">
+        <form (ngSubmit)="1===1" fxFlex fxLayout="column">
             <mat-form-field>
                 <input type="email" placeholder="email" matInput>
 
@@ -17,8 +17,8 @@
 
             </mat-form-field>
 
-            <button mat-button color="primary" (click)="auth.login()">log in</button>
             <button mat-button color="secondary" (click)="auth.logout()">log out</button>
+            <button type="submit" mat-button color="primary" (click)="auth.login()">log in</button>
         </form>
 
 

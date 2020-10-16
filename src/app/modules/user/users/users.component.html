@@ -16,14 +16,57 @@
     </ul> -->
     <button routerLink="./form">new user</button>
 
-    <ul>
+    <!-- <ul>
         <li *ngFor="let user of usersService.usersSubject | async" class="user"
             [ngClass]="{'user-admin': user.isAdmin}">
             {{user | user}}
             <button (click)="user.toggleAdmin()">toggle admin</button>
             <button routerLink="./details/{{user.id}}">details</button>
         </li>
-    </ul>
+    </ul> -->
+
+    <table style="width: 100%;" mat-table #table [dataSource]="usersService.usersSubject | async"
+        class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="isAdmin">
+            <th mat-header-cell *matHeaderCellDef> Admin </th>
+            <td (click)="element.toggleAdmin()" mat-cell *matCellDef="let element"
+                [ngClass]="{'user-admin': element.isAdmin}"> {{element.isAdmin}}
+            </td>
+        </ng-container>
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="organisation">
+            <th mat-header-cell *matHeaderCellDef> Organisation </th>
+            <td mat-cell *matCellDef="let element"> {{element.organisation}} </td>
+        </ng-container>
+        <!-- Position Column -->
+        <ng-container matColumnDef="password">
+            <th mat-header-cell *matHeaderCellDef> password </th>
+            <td mat-cell *matCellDef="let element"> {{element.password}} </td>
+        </ng-container>
+
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
 
 
     <router-outlet></router-outlet>

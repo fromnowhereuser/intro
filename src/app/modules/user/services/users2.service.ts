@@ -36,6 +36,8 @@ export class Users2Service extends AbstractUserService {
     throw new Error('Method not implemented.');
   }
 
+
+
   getUsers(): Observable<Array<User>> {
     return this
       .http
