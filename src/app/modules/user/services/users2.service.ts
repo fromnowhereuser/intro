@@ -42,6 +42,7 @@ export class Users2Service extends AbstractUserService {
     return this
       .http
       .get<Array<any>>(this.appConfig.apiendpoint)
+
       .pipe(
         map(json => plainToClass(User, json)),
         tap(val => {

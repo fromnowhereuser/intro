@@ -16,6 +16,10 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 import { RouterModule } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
+import { NgxsModule } from '@ngxs/store';
+import { UsersState } from './store/users.state';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 
 @NgModule({
   declarations: [
@@ -33,8 +37,14 @@ import { MatDialogModule } from '@angular/material/dialog';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    MatDialogModule,
 
+    NgxsModule.forRoot([
+      UsersState
+    ]),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+    NgxsLoggerPluginModule.forRoot(),
+
+    MatDialogModule,
     MatTableModule
   ],
   providers: [
